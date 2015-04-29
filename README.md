@@ -1,10 +1,10 @@
-These are the CURL commands that I ran when following Andrew Woods excellent "LDP-PCDM-F4 In Action" tutorial at https://wiki.duraspace.org/display/FEDORA4x/LDP-PCDM-F4+In+Action
+These are the cURL commands that I ran when following Andrew Woods excellent [LDP-PCDM-F4 In Action](https://wiki.duraspace.org/display/FEDORA4x/LDP-PCDM-F4+In+Action) tutorial.
 
-
-These commands assume that Fedora 4 is running at the default location that Hydra Jetty configures and with authentication enabled (which is why the default username/password are being passed on the URL)
+These commands assume that Fedora 4 is running at the default location that **Hydra Jetty** configures and with authentication enabled (which is why the default username/password are being passed on the URL)
 
     http://fedoraAdmin:fedoraAdmin@localhost:8983/fedora/rest/
 
+If you are using a plain vanilla installation of Fedora 4 you should probably use [Adam Wead's scripts](https://github.com/awead/ldp-pcdm) instead. 
 
 
 # /objects/
@@ -138,5 +138,3 @@ Set prev/next (on the page 1 proxy)
 Set the first/last pointers (on the raven object)
 
     curl -i -XPATCH -H"Content-Type: application/sparql-update" --data-binary @iana-raven.ru "http://fedoraAdmin:fedoraAdmin@localhost:8983/fedora/rest/objects/raven"
-
-
