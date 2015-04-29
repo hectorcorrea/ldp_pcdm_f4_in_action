@@ -96,7 +96,7 @@ and add an indirect container inside the poe collection
 
 and now add a child to this indirect container
 
-  curl -i -XPUT -H"Content-Type: text/turtle" --data-binary @pcdm-raven-proxy.ttl "http://fedoraAdmin:fedoraAdmin@localhost:8983/fedora/rest/collections/poe/members/ravenProxy"
+    curl -i -XPUT -H"Content-Type: text/turtle" --data-binary @pcdm-raven-proxy.ttl "http://fedoraAdmin:fedoraAdmin@localhost:8983/fedora/rest/collections/poe/members/ravenProxy"
 
 
 
