@@ -99,6 +99,44 @@ and now add a child to this indirect container
     curl -i -XPUT -H"Content-Type: text/turtle" --data-binary @pcdm-raven-proxy.ttl "http://fedoraAdmin:fedoraAdmin@localhost:8983/fedora/rest/collections/poe/members/ravenProxy"
 
 
+# Adding proxies (for prev/next)
 
+## /objects/raven/orderProxies/
+
+    curl -i -XPUT -H"Content-Type: text/turtle" --data-binary @ldp-ordering-direct.ttl "http://fedoraAdmin:fedoraAdmin@localhost:8983/fedora/rest/objects/raven/orderProxies/"
+
+
+## /objects/raven/orderProxies/coverProxy
+
+    curl -i -XPUT -H"Content-Type: text/turtle" --data-binary @ldp-cover-proxy.ttl "http://fedoraAdmin:fedoraAdmin@localhost:8983/fedora/rest/objects/raven/orderProxies/coverProxy"
+
+
+## /objects/raven/orderProxies/page0Proxy
+
+    curl -i -XPUT -H"Content-Type: text/turtle" --data-binary @ldp-page0-proxy.ttl "http://fedoraAdmin:fedoraAdmin@localhost:8983/fedora/rest/objects/raven/orderProxies/page0Proxy"
+
+
+## /objects/raven/orderProxies/page1Proxy
+
+    curl -i -XPUT -H"Content-Type: text/turtle" --data-binary @ldp-page1-proxy.ttl "http://fedoraAdmin:fedoraAdmin@localhost:8983/fedora/rest/objects/raven/orderProxies/page1Proxy"
+
+
+# Adding the actual ordering
+
+Set next page (on the cover proxy)
+
+    curl -i -XPATCH -H"Content-Type: application/sparql-update" --data-binary @iana-cover-proxy.ru "http://fedoraAdmin:fedoraAdmin@localhost:8983/fedora/rest/objects/raven/orderProxies/coverProxy"
+
+Set prev/next (on the page 0 proxy)
+
+    curl -i -XPATCH -H"Content-Type: application/sparql-update" --data-binary @iana-page0-proxy.ru "http://fedoraAdmin:fedoraAdmin@localhost:8983/fedora/rest/objects/raven/orderProxies/page0Proxy"
+
+Set prev/next (on the page 1 proxy)
+
+    curl -i -XPATCH -H"Content-Type: application/sparql-update" --data-binary @iana-page1-proxy.ru "http://fedoraAdmin:fedoraAdmin@localhost:8983/fedora/rest/objects/raven/orderProxies/page1Proxy"
+
+Set the first/last pointers (on the raven object)
+
+    curl -i -XPATCH -H"Content-Type: application/sparql-update" --data-binary @iana-raven.ru "http://fedoraAdmin:fedoraAdmin@localhost:8983/fedora/rest/objects/raven"
 
 
