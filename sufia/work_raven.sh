@@ -86,6 +86,9 @@ curl -i -XPUT -H"Content-Type: text/turtle" --data-binary @raven-raven-proxy.ttl
 curl -i -XPATCH -H"Content-Type: application/sparql-update" --data-binary @iana-cover-proxy.ru $BASE/works/raven/orderProxies/coverProxy
 curl -i -XPATCH -H"Content-Type: application/sparql-update" --data-binary @iana-raven-proxy.ru $BASE/works/raven/orderProxies/ravenProxy
 
+# Add links for first/last page
+# Andrew's tutorial sets first/last at the work level but I am not sure that is correct
+# given than ordering is not part of the work. Shouldn't first/last be set on the 
+# orderProxies node instead?
+curl -i -XPATCH -H"Content-Type: application/sparql-update" --data-binary @iana-raven.ru $BASE/works/raven 
 
-# TODO: add the linking first/next to coverProxy and ravenProxy
-# TODO: add first/last to raven
