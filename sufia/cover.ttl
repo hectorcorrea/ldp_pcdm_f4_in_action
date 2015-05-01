@@ -1,0 +1,5 @@
+@prefix pcdm: <http://pcdm.org/models#> 
+@prefix dc: <http://purl.org/dc/terms/> 
+
+<> a pcdm:Object .
+<> dc:title "the cover page" .
