@@ -23,7 +23,7 @@ curl -i -XPUT -H "Content-Type: text/turtle" --data-binary @raven.ttl $BASE/work
 curl -i -XPUT -H "Content-Type: text/turtle" --data-binary @raven-genfiles.ttl $BASE/works/raven/genfiles
 
 
-# Add an object to represent the file (this is the Sufia GenericFile)
+# Add an object to represent the file (this is a Sufia GenericFile)
 # This is not the actual file, this is a pcdm:Object
 # This object has descriptive metadata (e.g. dc:title)
 curl -i -XPUT -H "Content-Type: text/turtle" --data-binary @cover.ttl $BASE/works/raven/genfiles/cover.jpg
@@ -36,7 +36,8 @@ curl -i -XPUT -H "Content-Type: text/turtle" --data-binary @cover-files.ttl $BAS
 # These objects do NOT have descriptive metadata
 curl -i -XPUT -H "Content-Type: image/jpeg"  --data-binary @cover.jpg $BASE/works/raven/genfiles/cover.jpg/files/content
 curl -i -XPUT -H "Content-Type: image/jpeg"  --data-binary @cover_thumb.jpg $BASE/works/raven/genfiles/cover.jpg/files/thumbnail
-
+curl -i -XPATCH -H"Content-Type: application/sparql-update" --data-binary @pcdm-file.ru $BASE/works/raven/genfiles/cover.jpg/files/content/fcr:metadata
+curl -i -XPATCH -H"Content-Type: application/sparql-update" --data-binary @pcdm-file.ru $BASE/works/raven/genfiles/cover.jpg/files/thumbnail/fcr:metadata
 
 # Add an object represent another file inside the work (again, this is a Sufia GenericFile)
 # This is not the actual file, this is a pcdm:Object
@@ -50,6 +51,10 @@ curl -i -XPUT -H "Content-Type: text/turtle" --data-binary @raven-pdf-files.ttl 
 curl -i -XPUT -H "Content-Type: application/pdf"  --data-binary @raven.pdf $BASE/works/raven/genfiles/raven.pdf/files/content
 curl -i -XPUT -H "Content-Type: image/png"        --data-binary @raven_thumb.png $BASE/works/raven/genfiles/raven.pdf/files/thumbnail
 curl -i -XPUT -H "Content-Type: text/plain"       --data-binary @raven.txt $BASE/works/raven/genfiles/raven.pdf/files/text
+
+curl -i -XPATCH -H"Content-Type: application/sparql-update" --data-binary @pcdm-file.ru $BASE/works/raven/genfiles/raven.pdf/files/content/fcr:metadata
+curl -i -XPATCH -H"Content-Type: application/sparql-update" --data-binary @pcdm-file.ru $BASE/works/raven/genfiles/raven.pdf/files/thumbnail/fcr:metadata
+curl -i -XPATCH -H"Content-Type: application/sparql-update" --data-binary @pcdm-file.ru $BASE/works/raven/genfiles/raven.pdf/files/text/fcr:metadata
 
 
 #
@@ -66,3 +71,5 @@ curl -i -XPUT -H "Content-Type: text/turtle" --data-binary @poe-members.ttl $BAS
 
 # Add the Raven work to the Poe collection
 curl -i -XPUT -H "Content-Type: text/turtle" --data-binary @raven-proxy.ttl $BASE/collections/poe/members/ravenProxy
+
+
