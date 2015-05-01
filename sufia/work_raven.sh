@@ -2,7 +2,6 @@
 
 BASE="http://fedoraAdmin:fedoraAdmin@localhost:8983/fedora/rest/pcdm"
 
-
 # Reset
 curl -X DELETE ${BASE}
 curl -X DELETE ${BASE}/fcr:tombstone
@@ -32,7 +31,7 @@ curl -i -XPUT -H "Content-Type: text/turtle" --data-binary @cover.ttl $BASE/work
 curl -i -XPUT -H "Content-Type: text/turtle" --data-binary @cover-files.ttl $BASE/works/raven/genfiles/cover.jpg/files
 
 # Add an actual file to the GenericFile (cover.jpg) via the direct container (cover.jpg/files)
-# These objects should pcdm:File (todo: add extra curl call to patch them)
+# These objects should pcdm:File 
 # These objects do NOT have descriptive metadata
 curl -i -XPUT -H "Content-Type: image/jpeg"  --data-binary @cover.jpg $BASE/works/raven/genfiles/cover.jpg/files/content
 curl -i -XPUT -H "Content-Type: image/jpeg"  --data-binary @cover_thumb.jpg $BASE/works/raven/genfiles/cover.jpg/files/thumbnail
@@ -73,3 +72,15 @@ curl -i -XPUT -H "Content-Type: text/turtle" --data-binary @poe-members.ttl $BAS
 curl -i -XPUT -H "Content-Type: text/turtle" --data-binary @raven-proxy.ttl $BASE/collections/poe/members/ravenProxy
 
 
+#
+# ORDERING
+#
+# Create a direct container for the ordering of files (cover.jpg and raven.pdf) inside the work (Raven.)
+curl -i -XPUT -H "Content-Type: text/turtle" --data-binary @raven-order.ttl $BASE/works/raven/orderProxies
+
+# Add proxies for both files
+curl -i -XPUT -H"Content-Type: text/turtle" --data-binary @raven-cover-proxy.ttl $BASE/works/raven/orderProxies/coverProxy
+curl -i -XPUT -H"Content-Type: text/turtle" --data-binary @raven-raven-proxy.ttl $BASE/works/raven/orderProxies/ravenProxy
+
+# TODO: add the linking first/next to coverProxy and ravenProxy
+# TODO: add first/last to raven
