@@ -30,7 +30,7 @@ LDP-PCDM-F4 in Action uses the example of a work "Raven" with a few files, that 
     RS   /collections/poe/members/ravenProxy
 
 
-**Question:** Will the Direct and Indirect containers have a mapping to Ruby classes or will their existence be handled behing the scenes by Active Fedora?
+**Question:** [1] Will the Direct and Indirect containers have a mapping to Ruby classes or will their existence be handled behing the scenes by Active Fedora?
 
 
 Fetching `/works/raven` will return 
