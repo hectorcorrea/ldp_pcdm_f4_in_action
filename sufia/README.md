@@ -54,3 +54,9 @@ Key for the LDP column (remember that all containers are also RDF sources)
 * IC: Indirect Container
 * NR: Non-RDF Source
 * RS: RDF Source
+
+You should also take a look at Adam Wead's [examples](https://github.com/awead/sufia-pcdm) on this topic.
+
+
+# Run the sample in Fedora 4 
+Run `work_raven.sh` to create these objects in Fedora 4.
