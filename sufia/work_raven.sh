@@ -82,5 +82,10 @@ curl -i -XPUT -H "Content-Type: text/turtle" --data-binary @raven-order.ttl $BAS
 curl -i -XPUT -H"Content-Type: text/turtle" --data-binary @raven-cover-proxy.ttl $BASE/works/raven/orderProxies/coverProxy
 curl -i -XPUT -H"Content-Type: text/turtle" --data-binary @raven-raven-proxy.ttl $BASE/works/raven/orderProxies/ravenProxy
 
+# Link cover to page and vice-versa
+curl -i -XPATCH -H"Content-Type: application/sparql-update" --data-binary @iana-cover-proxy.ru $BASE/works/raven/orderProxies/coverProxy
+curl -i -XPATCH -H"Content-Type: application/sparql-update" --data-binary @iana-raven-proxy.ru $BASE/works/raven/orderProxies/ravenProxy
+
+
 # TODO: add the linking first/next to coverProxy and ravenProxy
 # TODO: add first/last to raven
